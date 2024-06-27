@@ -1,10 +1,12 @@
-# A simple docker-compose template
+# A node app showcase
 
-*Date:* 2022-09-28  
+*Date:* 2024-06-27  
 *Author:* MvS  
-*keywords:* software-architecture, docker-compose
+*keywords:* software-architecture, docker-compose, node
 
 ## Description
+
+Based on the tutorial by [Ashwin](https://ashwin9798.medium.com/nginx-with-docker-and-node-js-a-beginners-guide-434fe1216b6b) on [Medium](https://medium.com).
 
 Use as a template for a docker-compose based image builds and deployments using a
 `Makefile` and an `.env` file for customization.

@@ -1,16 +1,21 @@
 # syntax=docker/dockerfile:1
-# based on
-# https://docs.docker.com/compose/gettingstarted/
-# and some housekeeping
+# pull the Node.js Docker image
 ARG BASEIMAGE
 FROM ${BASEIMAGE}
 
-COPY data /data
 
-WORKDIR /code
-RUN apk add --no-cache gcc musl-dev linux-headers
-COPY requirements.txt requirements.txt
-RUN pip install -r requirements.txt
+# create the directory inside the container
+WORKDIR /usr/src/app
+
+# copy the package.json files from local machine to the workdir in container
+ADD app /usr/src/app
+
+# run npm install in our local machine
+RUN npm install
+
+# our app is running on port 5000 within the container, so need to expose it
 EXPOSE 5000
 
-CMD ["flask", "run"]
+# the command that starts our app
+#CMD ["node", "index.js"]
+CMD ["npx", "nodemon", "index.js"]

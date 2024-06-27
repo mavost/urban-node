@@ -1,0 +1,27 @@
+{
+  "name": "urban_node",
+  "version": "1.0.0",
+  "description": "A showcase for a node app in docker",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mavost/urban_node.git"
+  },
+  "keywords": [
+    "node",
+    "nginx"
+  ],
+  "author": "Markus von Steht",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mavost/urban_node/issues"
+  },
+  "homepage": "https://github.com/mavost/urban_node#readme",
+  "dependencies": {
+    "express": "^4.19.2",
+    "nodemon": "^3.1.4"
+  }
+}
