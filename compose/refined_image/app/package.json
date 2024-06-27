@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/mavost/urban_node#readme",
   "dependencies": {
+    "@thoughtspot/visual-embed-sdk": "^1.28.5",
     "express": "^4.19.2",
     "nodemon": "^3.1.4"
   }

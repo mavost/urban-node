@@ -16,6 +16,7 @@ services:
      - BLA=0.0.0.0
     volumes:
      - ./compose/refined_image/app/index.js:/usr/src/app/index.js
+     - ./compose/refined_image/app/public:/usr/src/app/public
 
 networks:
   mydefaultstack:
