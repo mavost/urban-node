@@ -5,18 +5,24 @@ services:
     build:
       context: ./compose/refined_image
       args:
-       - BASEIMAGE=${FIRST_BASE_IMAGE}
+        - BASEIMAGE=${FIRST_BASE_IMAGE}
     image: ${FIRST_REFINED_IMAGE_ROOT}:${STACK_VERSION}
     container_name: ${STACK_NAME:-defstack}_nodealpine
+    env_file: .env
     ports:
-     - 8088:5000
+      - 8088:${NODE_SERVER_PORT}
     networks:
-     - mydefaultstack
+      - mydefaultstack
     environment:
-     - BLA=0.0.0.0
+      - BLA=0.0.0.0
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.nodealpine.tls=true"
+      - "traefik.http.routers.nodealpine.rule=Host(`node.${DOMAIN_NAME}`)"
+      - "traefik.http.services.nodealpine.loadbalancer.server.port=${NODE_SERVER_PORT}"
     volumes:
-     - ./compose/refined_image/app/index.js:/usr/src/app/index.js
-     - ./compose/refined_image/app/public:/usr/src/app/public
+      - ./compose/refined_image/app/index.js:/usr/src/app/index.js
+      - ./compose/refined_image/app/public:/usr/src/app/public
 
 networks:
   mydefaultstack:
