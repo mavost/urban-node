@@ -22,7 +22,7 @@ services:
       - "traefik.http.services.nodealpine.loadbalancer.server.port=${NODE_SERVER_PORT}"
     volumes:
       - ./compose/refined_image/app/index.js:/usr/src/app/index.js
-      - ./compose/refined_image/app/public:/usr/src/app/public
+      - ./compose/refined_image/app/public:/usr/src/app/public:ro
 
 networks:
   mydefaultstack:
