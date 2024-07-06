@@ -8,14 +8,14 @@ FROM ${BASEIMAGE}
 WORKDIR /usr/src/app
 
 # copy the package.json files from local machine to the workdir in container
-ADD app /usr/src/app
+ADD my_app /usr/src/app
 
 # run npm install in our local machine
 RUN npm install
 
-# our app is running on port 5000 within the container, so need to expose it
-EXPOSE 5000
+# is running on a port within the container, so need to expose it
+EXPOSE ${NODE_SERVER_PORT}
 
 # the command that starts our app
 #CMD ["node", "index.js"]
-CMD ["npx", "nodemon", "index.js"]
+CMD ["npm", "start"]

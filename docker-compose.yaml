@@ -14,15 +14,15 @@ services:
     networks:
       - mydefaultstack
     environment:
-      - BLA=0.0.0.0
+      - PORT=${NODE_SERVER_PORT}
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.nodealpine.tls=true"
       - "traefik.http.routers.nodealpine.rule=Host(`node.${DOMAIN_NAME}`)"
       - "traefik.http.services.nodealpine.loadbalancer.server.port=${NODE_SERVER_PORT}"
     volumes:
-      - ./compose/refined_image/app/index.js:/usr/src/app/index.js
-      - ./compose/refined_image/app/public:/usr/src/app/public:ro
+      - ./compose/refined_image/my_app/src:/usr/src/app/src:ro
+      - ./compose/refined_image/my_app/public:/usr/src/app/public:ro
 
 networks:
   mydefaultstack:
